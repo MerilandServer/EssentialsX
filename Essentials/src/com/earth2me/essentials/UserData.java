@@ -85,6 +85,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         ignoredPlayers = _getIgnoredPlayers();
         logoutLocation = _getLogoutLocation();
         lastAccountName = _getLastAccountName();
+        destroyMinecart = _getDestroyMinecartOnQuit(); //Meriland: Destruir minecarts al bajarte de ellas
     }
 
     private BigDecimal money;
@@ -748,7 +749,25 @@ public abstract class UserData extends PlayerExtension implements IConf {
         config.setProperty("timestamps.kits", kitTimestamps);
         config.save();
     }
-
+    
+    //Meri start
+    private boolean destroyMinecart;
+ 
+    private boolean _getDestroyMinecartOnQuit() {
+        return config.getBoolean("destroyminecart", true);
+    }
+ 	
+    public boolean destroyMinecartOnQuit() {
+        return destroyMinecart;
+    }
+ 
+    public void setDestroyMinecartOnQuit(boolean set) {
+        destroyMinecart = set;
+ 	config.setProperty("destroyminecart", set);
+ 	config.save();
+    }
+    //Meri end
+    
     public void setConfigProperty(String node, Object object) {
         final String prefix = "info.";
         node = prefix + node;
