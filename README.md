@@ -29,7 +29,7 @@ Because EssentialsX builds against the Spigot/CraftBukkit server software for le
 ```
 java -jar BuildTools.jar --rev 1.8
 java -jar BuildTools.jar --rev 1.8.3
-java -jar BuildTools.jar
+java -jar BuildTools.jar --rev 1.9
 ```
 
 Then, to build with Maven, use the command

@@ -3,7 +3,6 @@ package com.earth2me.essentials;
 import com.earth2me.essentials.utils.NumberUtil;
 import com.earth2me.essentials.utils.StringUtil;
 import net.ess3.api.IEssentials;
-import net.ess3.nms.v1_9_R1.SpawnEgg1_9;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -12,7 +11,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
-import org.bukkit.material.SpawnEgg;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 
@@ -25,10 +23,10 @@ import static com.earth2me.essentials.I18n.tl;
 
 public class ItemDb implements IConf, net.ess3.api.IItemDb {
     private final transient IEssentials ess;
-    private final transient Map<String, Integer> items = new HashMap<String, Integer>();
-    private final transient Map<ItemData, List<String>> names = new HashMap<ItemData, List<String>>();
-    private final transient Map<ItemData, String> primaryName = new HashMap<ItemData, String>();
-    private final transient Map<String, Short> durabilities = new HashMap<String, Short>();
+    private final transient Map<String, Integer> items = new HashMap<>();
+    private final transient Map<ItemData, List<String>> names = new HashMap<>();
+    private final transient Map<ItemData, String> primaryName = new HashMap<>();
+    private final transient Map<String, Short> durabilities = new HashMap<>();
     private final transient ManagedFile file;
     private final transient Pattern splitPattern = Pattern.compile("((.*)[:+',;.](\\d+))");
 
@@ -92,7 +90,7 @@ public class ItemDb implements IConf, net.ess3.api.IItemDb {
     @Override
     public ItemStack get(final String id) throws Exception {
         int itemid = 0;
-        String itemname = null;
+        String itemname;
         short metaData = 0;
         Matcher parts = splitPattern.matcher(id);
         if (parts.matches()) {
@@ -152,11 +150,7 @@ public class ItemDb implements IConf, net.ess3.api.IItemDb {
             } catch (IllegalArgumentException e) {
                 throw new Exception("Can't spawn entity ID " + metaData + " from spawn eggs.");
             }
-            try {
-                retval = new SpawnEgg1_9(type).toItemStack();
-            } catch (Throwable t) {
-                retval = new SpawnEgg(type).toItemStack();
-            }
+            retval = ess.getSpawnEggProvider().createEggItem(type);
         } else {
             retval.setDurability(metaData);
         }
@@ -166,7 +160,7 @@ public class ItemDb implements IConf, net.ess3.api.IItemDb {
 
     @Override
     public List<ItemStack> getMatching(User user, String[] args) throws Exception {
-        List<ItemStack> is = new ArrayList<ItemStack>();
+        List<ItemStack> is = new ArrayList<>();
 
         if (args.length < 1) {
             is.add(user.getBase().getItemInHand());
