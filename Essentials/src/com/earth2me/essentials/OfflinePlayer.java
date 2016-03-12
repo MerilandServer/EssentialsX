@@ -1014,6 +1014,11 @@ public class OfflinePlayer implements Player {
     }
 
     @Override
+    public MainHand getMainHand() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public void playSound(Location arg0, Sound arg1, float arg2, float arg3) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -1095,7 +1100,7 @@ public class OfflinePlayer implements Player {
 
     @Override
     public void setGlowing(boolean b) {
-
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
