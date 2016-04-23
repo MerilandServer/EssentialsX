@@ -1,6 +1,7 @@
 package com.earth2me.essentials;
 
 import com.earth2me.essentials.utils.NumberUtil;
+import net.ess3.nms.updatedmeta.BasePotionDataProvider;
 import com.earth2me.essentials.utils.StringUtil;
 import net.ess3.api.IEssentials;
 import org.bukkit.Bukkit;
@@ -151,6 +152,8 @@ public class ItemDb implements IConf, net.ess3.api.IItemDb {
                 throw new Exception("Can't spawn entity ID " + metaData + " from spawn eggs.");
             }
             retval = ess.getSpawnEggProvider().createEggItem(type);
+        } else if (mat.name().endsWith("POTION")) {
+            retval = ess.getPotionMetaProvider().createPotionItem(mat, metaData);
         } else {
             retval.setDurability(metaData);
         }

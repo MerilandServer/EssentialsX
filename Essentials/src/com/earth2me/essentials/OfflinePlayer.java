@@ -1109,6 +1109,16 @@ public class OfflinePlayer implements Player {
     }
 
     @Override
+    public void setInvulnerable(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean isInvulnerable() {
+        return false;
+    }
+
+    @Override
     public void setPlayerWeather(WeatherType arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -1221,6 +1231,36 @@ public class OfflinePlayer implements Player {
     @Override
     public boolean setLeashHolder(Entity arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean isGliding() {
+        return false;
+    }
+
+    @Override
+    public void setGliding(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void setAI(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean hasAI() {
+        return false;
+    }
+
+    @Override
+    public void setCollidable(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean isCollidable() {
+        return false;
     }
 
     @Override

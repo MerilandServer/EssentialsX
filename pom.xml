@@ -41,9 +41,8 @@
         <module>EssentialsProtect</module>
         <module>EssentialsSpawn</module>
         <module>EssentialsXMPP</module>
-        <module>EssentialsGroupManager</module>
         <module>nms/NMSProvider</module>
-        <module>nms/BlockMetaProvider</module>
+        <module>nms/UpdatedMetaProvider</module>
         <module>nms/1_8_R1Provider</module>
         <module>nms/1_8_R2Provider</module>
         <module>nms/LegacyProvider</module>
@@ -148,11 +147,6 @@
                         <artifactItem>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>EssentialsXXMPP</artifactId>
-                            <version>${project.version}</version>
-                        </artifactItem>
-                        <artifactItem>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>EssentialsXGroupManager</artifactId>
                             <version>${project.version}</version>
                         </artifactItem>
                     </artifactItems>
