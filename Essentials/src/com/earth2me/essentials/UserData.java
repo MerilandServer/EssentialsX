@@ -86,6 +86,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         logoutLocation = _getLogoutLocation();
         lastAccountName = _getLastAccountName();
         destroyMinecart = _getDestroyMinecartOnQuit(); //Meriland: Destruir minecarts al bajarte de ellas
+        lastDeadLocation = _getLastDeadLocation(); //Meriland: Guardar hash de la ultima muerte
     }
 
     private BigDecimal money;
@@ -764,6 +765,22 @@ public abstract class UserData extends PlayerExtension implements IConf {
     public void setDestroyMinecartOnQuit(boolean set) {
         destroyMinecart = set;
  	config.setProperty("destroyminecart", set);
+ 	config.save();
+    }
+    
+    private String lastDeadLocation = null;
+ 
+    private String _getLastDeadLocation() {
+        return config.getString("lastdeadlocation");
+    }
+ 	
+    public String getLastDeadLocation() {
+        return lastDeadLocation;
+    }
+ 
+    public void setLastDeadLocation(String location) {
+        lastDeadLocation = location;
+ 	config.setProperty("lastdeadlocation", location);
  	config.save();
     }
     //Meri end

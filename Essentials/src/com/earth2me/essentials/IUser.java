@@ -65,6 +65,10 @@ public interface IUser {
     boolean destroyMinecartOnQuit();
     
     void setDestroyMinecartOnQuit(boolean destroy);
+    
+    String getLastDeadLocation();
+    
+    void setLastDeadLocation(String location);
     //Meri end
     
     boolean isGodModeEnabled();
